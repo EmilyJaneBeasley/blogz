@@ -6,6 +6,10 @@
             .error {
                 color: red;
             }
+
+            .flashes {
+                color: red;
+            }
         </style>
     </head>
 <body>
@@ -16,6 +20,23 @@
         <br></br>
      
         <a href='/newpost'>Add a Blog Entry</a>
+
+        <br></br>
+
+        <a href='/login'>Login</a>
+
+        <br></br>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+        {% endwith %}
     </nav>
 
     
