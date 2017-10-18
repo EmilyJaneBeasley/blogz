@@ -2,26 +2,29 @@
 
 {% block content %}
 
-<h1 align="center">Build a Blog</h1>
-
-{% if blogs|length ==0 %}
-<p>No blogs yet</p>
-
-    {% else %}
-
-
+<h1 align="center">Blog Posts!</h1>
 
 
 <ul>
-    {% for blog in blogs %}
-    <li>
-    <a href=/blog?id={{blog.id}}><h3>{{blog.title}}</h3></a>
-    {{blog.body}}
-    </li>
-    <br>
+    {% for user in users %}
+        {% for blog in blogs %}
+            {% if user.id == blog.owner_id %}
+    
+    <h3><a href="/blog?id={{blog.id}}" value="{{blog.title}}">{{blog.title}}</a></h3>
+    
+    <h4 value="{{blog.body}}">{{blog.body}}</h4>
+
+    <h5><i>Posted by:<a href="/blog?user={{user.id}}">{{ user.username }}</a></i></h5>
+    
+    <input type="hidden" name="id" value="{{blog.id}}"/>
+
+    <hr />
+             {% endif %}
+
+        {% endfor %}
     {% endfor %}
+
 </ul>
-    {% endif %}
 
 
 {% endblock %}
