@@ -4,18 +4,22 @@
 
 <h1>User Entries</h1>
 
-<hr>
+
 {% for blog in blogs %}
-
-<div>
-    <a href='/blog?id={{blog.id}}'><h2>{{ blog.title }}</h2></a>
-    <p> {{ blog.body }} </p>
-    <p>Posted by: <a href="/blog?userid={{blog.owner_id}}">{{ blog.owner.username }}</a></p>
-
+   
     
 
-</div>
 
+    <h2><a href='/blog?id={{blog.id}}' name="blog_title" value="{{blog_title}}">{{ blog.title }}</a></h2>
+    <h4 name="blog_body" value="blog_body}}">{{blog.body}}</h4>
+
+    <p>Posted by: <a href="/blog?user={{blog.owner.id}}">{{ blog.owner.username }}</a></p>
+
+    <input type="hidden" name="id" value="{{blog.id}}"/>
+    <hr />
+    
+
+
+      
 {% endfor %}
-
 {% endblock %}

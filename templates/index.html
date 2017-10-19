@@ -3,13 +3,13 @@
 {% block content %}
 
     
-        <h1>Blog Users!</h1>
+        <h1>Blog Users!</h1> 
         
 
         {% for user in users %}
             <ul>
         <li>
-            <a href="/blog?user_id={{user.id}}">{{ user.username }}</a>
+            <a href="/blog?user={{user.id}}">{{ user.username }}</a>
 
             <input type="hidden" name="user" value="{{user.id}}"/> 
 
