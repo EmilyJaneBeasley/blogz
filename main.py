@@ -109,7 +109,7 @@ def blog():
         blog = Blog.query.get(id)
         title = blog.title
         body = blog.body
-        return render_template('single_entry.html', title=title, body=body)
+        return render_template('single_entry.html',blog=blog)
     if request.args.get('user'):
         user_id = request.args.get('user')
         blogs = Blog.query.filter_by(owner_id=user_id).all()

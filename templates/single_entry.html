@@ -2,22 +2,17 @@
 
 {% block content %}
 
-    
-      
+<h2>{{ blog.title }}</h2>
+
+<p>{{ blog.body }}</p>
+
+
+
+
+<i>Posted by:<a href="/blog?user={{blog.owner_id}}">{{blog.owner.username}}</a></i>
+
+
+ 
 
     
-    <h2>{{ title }}</h2>
-
-    <p>{{ body }}</p>
-
-    <p>Posted by: <a></a></p>
-
-
-
-    
-
-        
-
-
-
 {% endblock %}
