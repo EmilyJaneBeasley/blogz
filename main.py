@@ -60,6 +60,7 @@ def login():
     return render_template('/login.html')
     
         
+        
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -84,22 +85,23 @@ def signup():
             flash('User name is already taken')
             return redirect('/signup')
 
-
-        user = User(username=username, password=password)
-        db.session.add(user)
-        db.session.commit()
-        session['user'] = user.username
-        return redirect("/newpost")
+        if len(username) > 3 and len(password) > 3 and password == verify and username_db_count == 0:
+            user = User(username=username, password=password)
+            db.session.add(user)
+            db.session.commit()
+            session['user'] = user.username
+            return redirect('/newpost')
     else:
         return render_template('signup.html')
 
 @app.route('/logout')
 def logout():
     del session['username']
-    return redirect('/')
+    return redirect('/blog')
 
 @app.route('/newpost',methods=["POST", "GET"])
 def new_blog():
+
     return render_template('newpost.html')
 
 @app.route('/blog', methods=['POST','GET'])
