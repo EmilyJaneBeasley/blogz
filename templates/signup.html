@@ -5,9 +5,9 @@
 <form action="/signup" method="post">
   <label>
     User Name
-    <p class="error">{{username_error}}</p>
+  
     
-    <input type="text" name="username" required />
+    <input type="text" name="username" value="{{username}}" required />
   </label>
   <p><label>Password <input type="password" name="password" required /></label</p>
   <p><label>Verify Password <input type="password" name="verify" required /></label></p>

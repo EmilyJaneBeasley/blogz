@@ -74,11 +74,11 @@ def signup():
 
         if len(password) < 3:
             flash('Password must be longer than 3 characters')
-            return redirect('/signup')       
+            return render_template('signup.html', username=username, password='')    
         
         if password != verify:
             flash('Passwords do not match')
-            return redirect('/signup')
+            return render_template('signup.html', username=username, password='') 
 
         username_db_count = User.query.filter_by(username=username).count()
         if username_db_count > 0:
